@@ -1,72 +1,37 @@
-import React, { Component, PropTypes, createElement } from 'react';
+import React, { Component, PropTypes, createElement } from "react"
 
-class Fetch extends Component {
+class Fetch extends React.Component {
   constructor() {
-    super();
-    this.state = {
-      response: null
-    };
-  }
-
-  getChildContext() {
-    return { response: this.state.response };
+    super()
+    this.state = {}
   }
 
   componentDidMount() {
-    fetch(this.props.path, this.props.options)
-      .then(r => r.json())
-      .then(response => this.setState({ response }));
+    let status = {}
+
+    fetch(this.props.url, this.props.init)
+      .then(response => {
+        status = {
+          ok: response.ok,
+          status: response.status,
+          statusText: response.statusText,
+          url: response.url,
+        }
+
+        return response
+      })
+      .then(response => response.json())
+      .then(json => this.setState({ status, json }))
+      .catch(error => this.setState({ status }))
   }
 
   render() {
-    return (
-      <div>
-        {this.state.response
-          ? <div>
-              {this.props.children(this.state.response)}
-            </div>
-          : <div>no response</div>}
-      </div>
-    );
+    return React.Children.only(this.props.children(this.state))
   }
 }
-
-Fetch.childContextTypes = {
-  response: PropTypes.object
-};
-
-const Formatter = ({ obj }) => <pre>{JSON.stringify(obj, null, 2)}</pre>;
-
-const withResponse = Composed => {
-  class FetchContextProvider extends Component {
-    render() {
-      return <Composed {...this.context} />;
-    }
-  }
-
-  FetchContextProvider.contextTypes = {
-    response: PropTypes.object
-  };
-
-  return FetchContextProvider;
-};
-
-const Response = withResponse(({ response }) => <Formatter obj={response} />);
-
-// TODO: JSONAPI
-// const Idx = ({ idx }) =>
-//   createElement(
-//     withResponse(({ response }) => <Formatter obj={response[idx]} />)
-//   );
-// const Links = () => <Idx idx="links" />;
-// const Data = () => <Idx idx="data" />;
-// const Included = () => <Idx idx="included" />;
-// const Meta = () => <Idx idx="meta" />;
-
-export default {
-  Fetch,
-  Formatter,
-  Idx,
-  Response,
-  withResponse,
+Fetch.defaultProps = {
+  url: "",
+  init: {},
 }
+
+export default Fetch
