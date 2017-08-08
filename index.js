@@ -7,9 +7,13 @@ class Fetch extends Component {
   }
 
   componentDidMount() {
+    const url = this.props.__status
+      ? `http://httpstat.us/${this.props.__status}`
+      : this.props.url
+
     let status = {}
 
-    fetch(this.props.url, this.props.init)
+    fetch(url, this.props.init)
       .then(response => {
         status = {
           ok: response.ok,

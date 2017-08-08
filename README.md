@@ -155,6 +155,68 @@ Pokeapi.defaultProps = {
 }
 ```
 
+## Fake status
+This tool is intended for designers.
+So it needs a way of faking all request statuses.
+
+`__status` takes a request code and will override the requested
+`url` when used.
+
+It uses [httpstat.us](http://httpstat.us/) to get the proper
+response.
+
+```js
+<ReactJSONFetch
+  url="https://some-url.com"
+  __status={500}
+>
+  {/* ... */}
+</ReactJSONFetch>
+
+// => fetch("http://httstat.us/500", {})
+```
+
+This gives you a nice way to design for status codes that are
+hard to simulate.
+
+## Installation
+### Node
+```npm i react-json-fetch --save```
+or
+```yarn add react-json-fetch```
+
+```js
+import Fetch from "react-json-fetch"
+
+<Fetch url="http://pokeapi.co/api/v2/pokemon/">
+  {({ status, json }) => {
+    if (status && status.ok) { return <div>Hurray!</div> }
+    if (status && !status.ok) { return <div>Bummer!</div> }
+    return <div>Loading...</div>
+  }}
+</Fetch>
+```
+
+### Browser
+Exports `ReactJSONFetch` on `window`.
+
+```js
+<script
+  crossorigin
+  src="https://unpkg.com/react-json-fetch"
+></script>
+
+<script type="text/babel">
+  <ReactJSONFetch url="http://pokeapi.co/api/v2/pokemon/">
+    {({ status, json }) => {
+      if (status && status.ok) { return <div>Hurray!</div> }
+      if (status && !status.ok) { return <div>Bummer!</div> }
+      return <div>Loading...</div>
+    }}
+  </ReactJSONFetch>
+</script>
+```
+
 ## Code Quality
 [Learn React](#https://learnreact.com) open source, is intended for education.
 Source should be singularly focus and readable above all.
