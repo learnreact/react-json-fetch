@@ -83,9 +83,11 @@ var Fetch = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      var url = this.props.__status ? "http://httpstat.us/" + this.props.__status : this.props.url;
+
       var status = {};
 
-      fetch(this.props.url, this.props.init).then(function (response) {
+      fetch(url, this.props.init).then(function (response) {
         status = {
           ok: response.ok,
           status: response.status,

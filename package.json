@@ -1,6 +1,6 @@
 {
   "name": "react-json-fetch",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/react-json-fetch.js",
   "module": "dist/react-json-fetch.mjs",
@@ -11,6 +11,7 @@
   },
   "author": "Michael Chan (@chantastic)",
   "license": "MIT",
+  "files": ["package.json", "dist", "index.js", "LICENSE", "README.md"],
   "dependencies": {
     "babel-preset-env": "^1.6.0",
     "react": "^15.6.1"
