@@ -1,6 +1,6 @@
 {
   "name": "react-json-fetch",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "main": "dist/react-json-fetch.js",
   "module": "dist/react-json-fetch.mjs",
