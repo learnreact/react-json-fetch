@@ -1,6 +1,6 @@
-import React, { Component, PropTypes, createElement } from "react"
+import React, { Component } from "react"
 
-class Fetch extends React.Component {
+class Fetch extends Component {
   constructor() {
     super()
     this.state = {}
