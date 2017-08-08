@@ -11,7 +11,7 @@
   },
   "author": "Michael Chan (@chantastic)",
   "license": "MIT",
-  "files": ["package.json", "dist", "index.js", "LICENSE", "README.md"],
+  "files": ["dist", "index.js"],
   "dependencies": {
     "babel-preset-env": "^1.6.0",
     "react": "^15.6.1"
