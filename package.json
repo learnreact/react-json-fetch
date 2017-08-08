@@ -1,6 +1,6 @@
 {
   "name": "react-json-fetch",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "dist/react-json-fetch.js",
   "module": "dist/react-json-fetch.mjs",
@@ -11,6 +11,14 @@
   },
   "author": "Michael Chan (@chantastic)",
   "license": "MIT",
+  "homepage": "https://github.com/learnreact/react-json-fetch",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/learnreact/react-json-fetch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/learnreact/react-json-fetch/issues"
+  },
   "files": ["dist", "index.js"],
   "dependencies": {
     "babel-preset-env": "^1.6.0",
