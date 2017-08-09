@@ -13,6 +13,8 @@ class Fetch extends Component {
 
     let status = {}
 
+    if (!url) return
+
     fetch(url, this.props.init)
       .then(response => {
         status = {
