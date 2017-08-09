@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -66,8 +66,8 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
-var Fetch = function (_Component) {
-  inherits(Fetch, _Component);
+var Fetch = function (_React$Component) {
+  inherits(Fetch, _React$Component);
 
   function Fetch() {
     classCallCheck(this, Fetch);
@@ -86,6 +86,8 @@ var Fetch = function (_Component) {
       var url = this.props.__status ? "http://httpstat.us/" + this.props.__status : this.props.url;
 
       var status = {};
+
+      if (!url) return;
 
       fetch(url, this.props.init).then(function (response) {
         status = {
@@ -111,7 +113,7 @@ var Fetch = function (_Component) {
     }
   }]);
   return Fetch;
-}(Component);
+}(React.Component);
 
 Fetch.defaultProps = {
   url: "",

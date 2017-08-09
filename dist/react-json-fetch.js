@@ -4,7 +4,7 @@
 	(global.ReactJSONFetch = factory(global.React));
 }(this, (function (React) { 'use strict';
 
-var React__default = 'default' in React ? React['default'] : React;
+React = React && React.hasOwnProperty('default') ? React['default'] : React;
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -72,8 +72,8 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
-var Fetch = function (_Component) {
-  inherits(Fetch, _Component);
+var Fetch = function (_React$Component) {
+  inherits(Fetch, _React$Component);
 
   function Fetch() {
     classCallCheck(this, Fetch);
@@ -92,6 +92,8 @@ var Fetch = function (_Component) {
       var url = this.props.__status ? "http://httpstat.us/" + this.props.__status : this.props.url;
 
       var status = {};
+
+      if (!url) return;
 
       fetch(url, this.props.init).then(function (response) {
         status = {
@@ -113,7 +115,7 @@ var Fetch = function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return React__default.Children.only(this.props.children(this.state));
+      return React.Children.only(this.props.children(this.state));
     }
   }]);
   return Fetch;
