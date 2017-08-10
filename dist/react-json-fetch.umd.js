@@ -1,4 +1,10 @@
-import React from 'react';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react')) :
+	typeof define === 'function' && define.amd ? define(['react'], factory) :
+	(global.ReactJSONFetch = factory(global.React));
+}(this, (function (React) { 'use strict';
+
+React = React && 'default' in React ? React['default'] : React;
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -83,13 +89,11 @@ var Fetch = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var url = this.props.__status ? "http://httpstat.us/" + this.props.__status : this.props.url;
-
       var status = {};
 
-      if (!url) return;
+      if (!this.props.url) return;
 
-      fetch(url, this.props.init).then(function (response) {
+      fetch(this.props.url, this.props.init).then(function (response) {
         status = {
           ok: response.ok,
           status: response.status,
@@ -120,4 +124,6 @@ Fetch.defaultProps = {
   init: {}
 };
 
-export default Fetch;
+return Fetch;
+
+})));

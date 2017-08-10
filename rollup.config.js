@@ -1,25 +1,36 @@
+import resolve from "rollup-plugin-node-resolve"
+import commonjs from "rollup-plugin-commonjs"
 import babel from "rollup-plugin-babel"
-import babelrc from "babelrc-rollup"
+import pkg from "./package.json"
 
-const pkg = require("./package.json")
-const external = Object.keys(pkg.dependencies)
+const external = Object.keys(pkg.dependencies || {})
 
-export default {
-  entry: "index.js",
-  external: external,
-  plugins: [babel(babelrc())],
-  globals: {
-    react: "React",
+export default [
+  {
+    entry: "index.js",
+    dest: pkg.browser,
+    format: "umd",
+    external,
+    moduleName: "ReactJSONFetch",
+    plugins: [
+      resolve(),
+      commonjs(),
+      babel({
+        exclude: ["node_modules/**"],
+      }),
+    ],
   },
-  targets: [
-    {
-      dest: pkg.main,
-      format: "umd",
-      moduleName: "ReactJSONFetch",
-    },
-    {
-      dest: pkg.module,
-      format: "es",
-    },
-  ],
-}
+  {
+    entry: "index.js",
+    external,
+    targets: [
+      { dest: pkg.main, format: "cjs" },
+      { dest: pkg.module, format: "es" },
+    ],
+    plugins: [
+      babel({
+        exclude: ["node_modules/**"],
+      }),
+    ],
+  },
+]
