@@ -193,6 +193,10 @@ Exports `ReactJSONFetch` on `window`.
 </script>
 ```
 
+## TODO
+* re-renders. the current API is based completely on the url prop. so i need to provide a controlled way to re-fetch when that prop changes.
+
+
 ## Code Quality
 [Learn React](#https://learnreact.com) open source, is intended for education.
 Source should be singularly focus and readable above all.
