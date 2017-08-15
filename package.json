@@ -21,9 +21,13 @@
   "bugs": {
     "url": "https://github.com/learnreact/react-json-fetch/issues"
   },
-  "files": ["dist", "index.js"],
+  "files": [
+    "dist",
+    "index.js"
+  ],
   "dependencies": {
-    "react": "^15.6.1"
+    "react": "^15.6.1",
+    "prop-types": "^15.5.10"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",
