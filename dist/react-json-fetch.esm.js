@@ -30,6 +30,20 @@ var createClass = function () {
 
 
 
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
 
 
 var inherits = function (subClass, superClass) {
@@ -66,19 +80,19 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
-var Fetch = function (_React$Component) {
-  inherits(Fetch, _React$Component);
+var ReactJSONFetch = function (_React$Component) {
+  inherits(ReactJSONFetch, _React$Component);
 
-  function Fetch() {
-    classCallCheck(this, Fetch);
+  function ReactJSONFetch() {
+    classCallCheck(this, ReactJSONFetch);
 
-    var _this = possibleConstructorReturn(this, (Fetch.__proto__ || Object.getPrototypeOf(Fetch)).call(this));
+    var _this = possibleConstructorReturn(this, (ReactJSONFetch.__proto__ || Object.getPrototypeOf(ReactJSONFetch)).call(this));
 
     _this.state = {};
     return _this;
   }
 
-  createClass(Fetch, [{
+  createClass(ReactJSONFetch, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -105,17 +119,25 @@ var Fetch = function (_React$Component) {
       });
     }
   }, {
+    key: "getChildContext",
+    value: function getChildContext() {
+      return _extends({}, this.state);
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.Children.only(this.props.children(this.state));
     }
   }]);
-  return Fetch;
+  return ReactJSONFetch;
 }(React.Component);
 
-Fetch.defaultProps = {
+ReactJSONFetch.defaultProps = {
   url: "",
   init: {}
 };
+ReactJSONFetch.childContextTypes = {
+  state: PropTypes.object
+};
 
-export default Fetch;
+export default ReactJSONFetch;
