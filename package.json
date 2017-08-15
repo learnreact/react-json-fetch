@@ -1,6 +1,6 @@
 {
   "name": "react-json-fetch",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "An extensible fetch component for prototyping",
   "main": "dist/react-json-fetch.cjs.js",
   "module": "dist/react-json-fetch.esm.js",

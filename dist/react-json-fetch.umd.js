@@ -37,20 +37,6 @@ var createClass = function () {
 
 
 
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
 
 
 var inherits = function (subClass, superClass) {
@@ -128,7 +114,10 @@ var ReactJSONFetch = function (_React$Component) {
   }, {
     key: "getChildContext",
     value: function getChildContext() {
-      return _extends({}, this.state);
+      return {
+        status: this.state.status,
+        json: this.state.json
+      };
     }
   }, {
     key: "render",
@@ -144,7 +133,8 @@ ReactJSONFetch.defaultProps = {
   init: {}
 };
 ReactJSONFetch.childContextTypes = {
-  state: PropTypes.object
+  status: PropTypes.object,
+  json: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 };
 
 return ReactJSONFetch;
