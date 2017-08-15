@@ -29,7 +29,10 @@ class ReactJSONFetch extends React.Component {
   }
 
   getChildContext() {
-    return { ...this.state }
+    return {
+      status: this.state.status,
+      json: this.state.json,
+    }
   }
 
   render() {
@@ -41,7 +44,8 @@ ReactJSONFetch.defaultProps = {
   init: {},
 }
 ReactJSONFetch.childContextTypes = {
-  state: PropTypes.object,
+  status: PropTypes.object,
+  json: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 }
 
 export default ReactJSONFetch
