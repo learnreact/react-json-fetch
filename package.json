@@ -1,6 +1,6 @@
 {
   "name": "react-json-fetch",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "An extensible fetch component for prototyping",
   "main": "dist/react-json-fetch.cjs.js",
   "module": "dist/react-json-fetch.esm.js",
@@ -21,10 +21,7 @@
   "bugs": {
     "url": "https://github.com/learnreact/react-json-fetch/issues"
   },
-  "files": [
-    "dist",
-    "index.js"
-  ],
+  "files": ["dist", "index.js"],
   "dependencies": {
     "react": "^15.6.1",
     "prop-types": "^15.5.10"
