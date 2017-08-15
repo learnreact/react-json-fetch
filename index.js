@@ -1,6 +1,6 @@
 import React from "react"
 
-class Fetch extends React.Component {
+class ReactJSONFetch extends React.Component {
   constructor() {
     super()
     this.state = {}
@@ -35,12 +35,12 @@ class Fetch extends React.Component {
     return React.Children.only(this.props.children(this.state))
   }
 }
-Fetch.defaultProps = {
+ReactJSONFetch.defaultProps = {
   url: "",
   init: {},
 }
-Fetch.childContextTypes = {
+ReactJSONFetch.childContextTypes = {
   state: PropTypes.object,
 }
 
-export default Fetch
+export default ReactJSONFetch
