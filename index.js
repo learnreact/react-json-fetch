@@ -27,6 +27,10 @@ class Fetch extends React.Component {
       .catch(error => this.setState({ status }))
   }
 
+  getChildContext() {
+    return { ...this.state }
+  }
+
   render() {
     return React.Children.only(this.props.children(this.state))
   }
@@ -34,6 +38,9 @@ class Fetch extends React.Component {
 Fetch.defaultProps = {
   url: "",
   init: {},
+}
+Fetch.childContextTypes = {
+  state: PropTypes.object,
 }
 
 export default Fetch
