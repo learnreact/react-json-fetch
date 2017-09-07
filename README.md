@@ -73,7 +73,7 @@ request.
           {json.results.map(pokemon =>
             <li>{pokemon.name}</li>
           )}
-        <ul/>
+        </ul>
       )
     }
 
